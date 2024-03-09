@@ -1,0 +1,1 @@
+bindsym $mod+space   exec bash -ic mpd-notify

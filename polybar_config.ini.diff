@@ -1,0 +1,16 @@
+modules-right        = wired-network mpd date
+[module/mpd]                                                     
+type = internal/mpd                                              
+host = 127.0.0.1                                                 
+port = 6600                                                      
+interval = 2                                                     
+format-online  = <icon-prev> <icon>                              
+format-playing = <icon-prev> <icon-pause> <icon-next>            
+format-paused  = <label-time> <icon-prev> <icon-play> <icon-next>
+format-stopped = <label-time> <icon-prev> <icon-play> <icon-next>
+label-offline  = 󰝛 : mpd is offline                              
+icon-prev = 󰒮                                                    
+icon-pause = 󰏧                                                   
+icon-play =                                                     
+icon-next = 󰒭                                                    
+modules-right        = wired-network mpd sdate
