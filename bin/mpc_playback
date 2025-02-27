@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+here=$(dirname `realpath $0`)
+
+if [[ `mpc` =~ 'playing' ]]
+then
+  mpc pause 2>/dev/null # Pause MPD playback
+  ${here}/mpc_notify 9000 2>/dev/null
+else
+  mpc play 2>/dev/null  # Play MPD playback
+  ${here}/mpc_check
+fi

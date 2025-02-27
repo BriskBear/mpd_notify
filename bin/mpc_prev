@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+mpc prev
+$HOME/.local/bin/mpc_check
