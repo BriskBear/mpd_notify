@@ -4,14 +4,12 @@
 # [playing] #289/1832   3:21/7:13 (46%)
 # volume:100%   repeat: off   random: on    single: off   consume: off
 
-timeout=${1:-3000}
 output=`mpc`
-artist="`echo $output|awk -F'-' '{print $1}'  2>/dev/null`"
-elapsed=`echo $output|awk -F'[\)\(]' '{print $2}' 2>/dev/null|awk -F'%' '{print $1}' 2>/dev/null`
-state="`echo $output|awk -F'[\],\[]' '{print $2}' 2>/dev/null`"
-title="`echo $output|awk -F'[-,\[]' '{print $2}' 2>/dev/null`"
-time="`echo $output|awk -F'#' '{print $2}'|awk '{print $2}' 2>/dev/null`"
+artist=`echo $output|awk -F'-' '{print $1}'`
+elapsed=`echo $output|awk -F'[\),\(]' '{print $2}'|awk -F'%' '{print $1}'` 2>/dev/null
+state=`echo $output|awk -F'[\],\[]' '{print $2}'`   2>/dev/null
+title=`echo $output|awk -F'[-,\[]' '{print $2}'`    2>/dev/null
+time=`echo $output|awk -F'#' '{print $2}'|awk '{print $2}'`
+ffmpeg -y -i "$HOME/data/`mpc --format %file%|head -1`" -filter:v scale=-2:120 /tmp/cover.jpg
 
-# echo -e "FullOut: $output\nArtist: $artist\nElapsed: $elapsed\nState: $state\nTitle: $title\nTime: $time"  # Debug Prompt
-
-dunstify -t ${timeout} -h "int:id:28" -h "int:value:$elapsed" "${state^}: " "Title: ${title}\nArtist: ${artist}\n${time}"
+dunstify -i /tmp/cover.jpg -r 27 -h int:id:27 -h int:value:$elapsed "${state^}: " "Title: ${title}\nArtist: ${artist}\n${time}"
