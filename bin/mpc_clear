@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+dunstify -C 27

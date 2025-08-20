@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 idx=0
-here=$(dirname `realpath $0`)
+here=$(dirname -- `realpath ${BASH_SOURCE[0]}`)
 
 while [[ $idx -lt 4 ]]
 do
