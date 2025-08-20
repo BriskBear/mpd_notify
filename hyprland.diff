@@ -1,0 +1,17 @@
+
+
+##############################
+###          mpd           ###
+##############################
+
+bind = $mainMod, SPACE, exec, mpc_playback
+bind = $mainMod, mouse:276, exec, mpc_next
+bind = $mainMod, mouse:275, exec, mpc_prev
+bind = $mainMod, mouse:274, exec, mpc_playback
+bind = $mainMod, mouse_up, exec, mpc_down
+bind = $mainMod, mouse_down, exec, mpc_up
+bind = , XF86AudioRaiseVolume, exec, mpc_up
+bind = , XF86AudioLowerVolume, exec, mpc_down
+bind = , XF86AudioPlay, exec, mpc_playback
+
+
